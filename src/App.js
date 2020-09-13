@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container } from 'reactstrap';
+import { Switch, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import SearchBox from './components/SearchBox/SearchBox';
 import Results from './components/Results/Results';
@@ -11,8 +12,10 @@ function App() {
       <Header />
       <Container>
         <SearchBox />
-        <Results />
-        <Result />
+        <Switch>
+          <Route exact path="/" component={Results} />
+          <Route exact path="/result" component={Result} />
+        </Switch>
       </Container>
     </div>
   );
