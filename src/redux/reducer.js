@@ -3,7 +3,8 @@ import * as actionTypes from './actionTypes';
 const initialState = {
   issues: {
     isFetched: false,
-    entries: []
+    entries: false,
+    error: false
   },
   search: '',
 };

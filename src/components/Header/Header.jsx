@@ -13,7 +13,7 @@ const Header = () => {
     <div>
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">FB Issue Tracker</NavbarBrand>
-        <NavbarToggler />
+        <NavbarToggler /> 
         <Collapse isOpen={true} navbar>
           <Nav className="mr-auto" navbar />
           <NavbarText>@javilaotz</NavbarText>

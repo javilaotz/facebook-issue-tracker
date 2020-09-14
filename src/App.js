@@ -6,7 +6,11 @@ import SearchBox from './components/SearchBox/SearchBox';
 import Results from './components/Results/Results';
 import Result from './components/Result/Result';
 
-function App() {
+import { connect } from 'react-redux';
+import { fetchIssues } from './redux/actions';
+
+const App = (props) => {
+
   return (
     <div className="App">
       <Header />
@@ -21,4 +25,11 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  issues: state.issues.entries || false
+});
+
+export default connect(
+  mapStateToProps,
+  { fetchIssues }
+)(App)

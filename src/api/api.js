@@ -1,17 +1,15 @@
-const url = 'https://api.github.com/repos/facebook/react'
-
-const error = () => ({response: false})
-
-const issue = id => {
-  const param = id ? `/${id}` : error();
-  return retrieveData(`${url}/issues${param}`);
-}
+import { GETissues } from './mockServer';
+/* 
+const url = 'https://api.github.com/repos/facebook/react' */
 
 const issues = () => {
-  return retrieveData(`${url}/issues`);
+  /* const param = id && `/${id}`; */
+  /* return retrieveData(`${url}/issues${param}`); */
+  const response = GETissues();
+  return response;
 }
 
-const retrieveData = requestURL => {
+/* const retrieveData = requestURL => {
   fetch(requestURL)
   .then(response => {
     return response.json();
@@ -19,11 +17,10 @@ const retrieveData = requestURL => {
   .then(data => {
     return data;
   });
-}
+} */
 
 const api = {
-  get: {
-    issue,  
+  get: {  
     issues,
   },
 }

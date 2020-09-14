@@ -1,17 +1,48 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { ListGroup, ListGroupItem, Badge } from 'reactstrap';
-import api from '../../api/api'
 
-const Results = (props) => {
-  const results = api.get.issues();
-  console.log(results)
-  return (
-    <ListGroup>
-      <ListGroupItem className="justify-content-between">Cras justo odio <Badge pill>14</Badge></ListGroupItem>
-      <ListGroupItem className="justify-content-between">Dapibus ac facilisis in <Badge pill>2</Badge></ListGroupItem>
-      <ListGroupItem className="justify-content-between">Morbi leo risus <Badge pill>1</Badge></ListGroupItem>
-    </ListGroup>
-  );
+import { connect } from 'react-redux';
+import { fetchIssues } from '../../redux/actions';
+
+class Results extends Component {
+  componentWillMount(){
+    this.props.fetchIssues();
+  }
+
+  setListItems = (issues) => {
+    return (
+      <ListGroup>
+        {issues.map(issue => {
+          return (
+            <ListGroupItem key={issue.id} className="justify-content-between">
+                <Badge pill>{issue.comments}</Badge>
+                {' '}
+                {issue.title}
+                {' '}
+                <Badge pill>{issue.comments}</Badge>
+            </ListGroupItem>
+          )
+        })}
+      </ListGroup>
+    )
+  }
+
+  render(){
+    const { search, issues, error, isFetching } = this.props;
+    if(isFetching) return <div>Loading...</div>;
+
+    return this.setListItems(issues);
+  }
 }
 
-export default Results;
+const mapStateToProps = state => ({
+  search: state.search,
+  issues: state.issues.entries,
+  error: state.issues.error,
+  isFetching: !state.issues.isFetched
+});
+
+export default connect(
+  mapStateToProps, 
+  { fetchIssues }
+)(Results)
