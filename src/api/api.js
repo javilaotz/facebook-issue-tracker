@@ -1,8 +1,14 @@
-const url = 'https://api.github.com/repos/facebook/react/'
+const url = 'https://api.github.com/repos/facebook/react'
 
-const issues = id => {
-  const param = id ? `/${id}` : '';
-  return retrieveData(`${url}issues${param}`);
+const error = () => ({response: false})
+
+const issue = id => {
+  const param = id ? `/${id}` : error();
+  return retrieveData(`${url}/issues${param}`);
+}
+
+const issues = () => {
+  return retrieveData(`${url}/issues`);
 }
 
 const retrieveData = requestURL => {
@@ -17,7 +23,8 @@ const retrieveData = requestURL => {
 
 const api = {
   get: {
-    issues,    
+    issue,  
+    issues,
   },
 }
 
