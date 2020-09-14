@@ -294,7 +294,7 @@ export const issuesResponse = [
           "description": ""
         }
       ],
-      "state": "open",
+      "state": "closed",
       "locked": false,
       "assignee": null,
       "assignees": [

@@ -4,6 +4,7 @@ const initialState = {
   issues: {
     isFetched: false,
     entries: false,
+    filteredEntries: false,
     error: false
   },
   search: '',
@@ -12,6 +13,9 @@ const initialState = {
 //Thunk
 export default (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.FILTER_ISSUES:
+      return { ...state, issues: { isFetched: true, filteredEntries: action.payload }};
+
     case actionTypes.SEARCH_ISSUES:
       return { ...state, search: action.payload};
 
