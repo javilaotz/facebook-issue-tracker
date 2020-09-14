@@ -4,12 +4,16 @@ const initialState = {
   issues: {
     isFetched: false,
     entries: []
-  }
+  },
+  search: '',
 };
 
 //Thunk
 export default (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.SEARCH_ISSUES:
+      return { ...state, search: action.payload};
+
     case actionTypes.FETCH_ISSUES_REQUEST:
       return { ...state, issues: { isFetched: false }};
 

@@ -1,6 +1,11 @@
 import * as actionTypes from './actionTypes';
 import api from '../api/api';
 
+export const searchIssues = param => ({
+  type: actionTypes.SEARCH_ISSUES,
+  payload: param
+})
+
 export const fetchIssues = () => async dispatch => {
   dispatch({
     type: actionTypes.FETCH_ISSUES_REQUEST
