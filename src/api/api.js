@@ -2,7 +2,7 @@ import { GETissues } from './mockServer';
 /* 
 const url = 'https://api.github.com/repos/facebook/react' */
 
-const issues = () => {
+const issues = id => {
   /* const param = id && `/${id}`; */
   /* return retrieveData(`${url}/issues${param}`); */
   const response = GETissues();

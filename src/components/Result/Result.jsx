@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 
-const Result = () => {
+const Result = (props) => {
   return (
     <Container>
       <h1>Title</h1>
